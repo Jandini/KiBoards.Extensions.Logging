@@ -27,11 +27,9 @@
 		<PackageProjectUrl>https://github.com/Jandini/KiBoards.Extensions.Logging</PackageProjectUrl>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Content Include="xunit.runner.json">
-			<IncludeInPackage>true</IncludeInPackage>
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-		</Content>
+	<ItemGroup>	
+		<Content Include="xunit.runner.json" Pack="true" PackagePath="contentFiles" PackageCopyToOutput="true" />
+		<Content Include="KiBoards.Extensions.Logging.targets" PackagePath="build/KiBoards.Extensions.Logging.targets" />
 	</ItemGroup>
 
 	<ItemGroup>

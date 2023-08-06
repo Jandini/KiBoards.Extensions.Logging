@@ -10,7 +10,7 @@ on:
   push:
     branches: '*'
   pull_request:
-    branches: 'main'
+    branches: '*'
 
 defaults:
   run:
@@ -38,6 +38,6 @@ jobs:
       run: dotnet pack --no-restore -c:Release
     
     - name: Push
-      # Push packages into private github repository 
-      if: github.ref == 'refs/heads/main'
+      # Push packages into private github repository only form main branch
+      # if: github.ref == 'refs/heads/main'
       run: dotnet nuget push "../bin/Release/*.nupkg" -k ${{ secrets.PACKAGE_REGISTRY_TOKEN }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
