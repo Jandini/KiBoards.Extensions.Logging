@@ -5,6 +5,7 @@
 		<BaseOutputPath>..\..\bin</BaseOutputPath>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>10</LangVersion>
+		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
