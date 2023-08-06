@@ -21,8 +21,8 @@
 		<PackageId>KiBoards.Extensions.Logging</PackageId>
 		<AssemblyName>KiBoards.Extensions.Logging</AssemblyName>
 		<RootNamespace>KiBoards.Extensions.Logging</RootNamespace>
-		<Description>KiBoards.Extensions.Logging</Description>
-		<PackageTags>KiBoards.Extensions.Logging</PackageTags>
+		<Description>A diagnostic logger for xUnit using Microsoft.Extensions.Logging.</Description>
+		<PackageTags>xunit janda logger</PackageTags>
 		<RepositoryUrl>https://github.com/Jandini/KiBoards.Extensions.Logging</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Jandini/KiBoards.Extensions.Logging</PackageProjectUrl>
 	</PropertyGroup>
