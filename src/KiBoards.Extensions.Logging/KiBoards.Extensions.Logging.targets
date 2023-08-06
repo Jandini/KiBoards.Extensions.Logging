@@ -4,6 +4,6 @@
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="@(Files)" DestinationFolder="$(TargetDir)/%(RecursiveDir)" />
+    <Copy Condition= " !Exists('$(TargetDir)/xunit.runner.json') " SourceFiles="@(Files)" DestinationFolder="$(TargetDir)/%(RecursiveDir)" />
   </Target>
 </Project>
