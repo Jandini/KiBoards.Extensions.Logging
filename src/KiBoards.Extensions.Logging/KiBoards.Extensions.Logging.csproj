@@ -29,9 +29,8 @@
 
 	<ItemGroup>
 		<Content Include="xunit.runner.json">
-			<PackagePath>build</PackagePath>
 			<IncludeInPackage>true</IncludeInPackage>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
 		</Content>
 	</ItemGroup>
 
