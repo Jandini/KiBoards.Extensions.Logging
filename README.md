@@ -28,8 +28,7 @@ public class UnitTest1 : IClassFixture<DiagnosticLoggerFixture>
     [Fact]
     public void Test1()
     {
-        _diagnosticLoggerFixture.MessageSink.OnMessage(
-        	new DiagnosticMessage("Hello World"));
+        _diagnosticLoggerFixture.MessageSink.OnMessage(new DiagnosticMessage("Hello World"));
     }
 }
 ```
@@ -63,6 +62,15 @@ public class UnitTest2 : IClassFixture<DiagnosticLoggerFixture>
     }
 }
 ```
+
+Visual Studio Test output. 
+
+![image](https://github.com/Jandini/KiBoards.Extensions.Logging/assets/19593367/21cff7ce-0dc0-42e6-b2ed-98b3448f5f29)
+
+Command line test output. 
+
+![image](https://github.com/Jandini/KiBoards.Extensions.Logging/assets/19593367/e21de261-f1fe-4ad7-9cac-e7eff9e8a952)
+
 
 
 
