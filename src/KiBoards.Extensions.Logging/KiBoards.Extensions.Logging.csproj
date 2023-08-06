@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<BaseOutputPath>..\..\bin</BaseOutputPath>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>10</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>Matt Janda</Authors>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageId>KiBoards.Extensions.Logging</PackageId>
+		<AssemblyName>KiBoards.Extensions.Logging</AssemblyName>
+		<RootNamespace>KiBoards.Extensions.Logging</RootNamespace>
+		<Description>KiBoards.Extensions.Logging</Description>
+		<PackageTags>KiBoards.Extensions.Logging</PackageTags>
+		<RepositoryUrl>https://github.com/Jandini/KiBoards.Extensions.Logging</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Jandini/KiBoards.Extensions.Logging</PackageProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="xunit.runner.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="xunit.runner.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\icon.png" Pack="true" PackagePath="" />
+		<None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="xunit" Version="2.5.0" />
+	</ItemGroup>
+</Project>
