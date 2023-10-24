@@ -8,7 +8,7 @@ namespace KiBoards.Extensions.Logging
     {
         private readonly IMessageSink _messageSink;
         private readonly ITestOutputHelper _outputHelper;
-
+        
         public DiagnosticLogger(IMessageSink messageSink, ITestOutputHelper outputHelper)
         {
             _messageSink = messageSink;
@@ -34,8 +34,11 @@ namespace KiBoards.Extensions.Logging
                
                 if (_outputHelper != null)
                 {
+                    // This could be implemented as begin scope
                     ITest test = _outputHelper.GetTest();
-                    messageParts.Add(test.DisplayName);
+
+                    var assemlbyName = Path.GetFileNameWithoutExtension(test.TestCase.TestMethod.TestClass.Class.Assembly.AssemblyPath);
+                    messageParts.Add(test.DisplayName.Replace(assemlbyName, "").TrimStart('.'));
                 }
 
                 messageParts.Add(logLevel.ToString());
