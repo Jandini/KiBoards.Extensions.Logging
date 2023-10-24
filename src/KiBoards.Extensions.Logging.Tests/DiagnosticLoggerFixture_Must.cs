@@ -9,7 +9,7 @@ namespace KiBoards.Extensions.Logging.Tests
 
         public DiagnosticLoggerFixture_Must(DiagnosticLoggerFixture diagnosticLoggerFixture)
         {            
-            var provider = new ServiceCollection()
+            var provider = new ServiceCollection()                
                 .AddDiagnosticLogger(diagnosticLoggerFixture, LogLevel.Debug)
                 .BuildServiceProvider();
 
@@ -23,12 +23,10 @@ namespace KiBoards.Extensions.Logging.Tests
         }
 
 
-
         [Fact]
         public void Log_Debug_HelloWorld()
         {
             _logger.LogDebug("Hello World");
-
         }
 
     }
