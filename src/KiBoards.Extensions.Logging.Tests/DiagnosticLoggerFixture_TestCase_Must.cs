@@ -15,7 +15,7 @@ namespace KiBoards.Extensions.Logging.Tests
         {
             var provider = new ServiceCollection()
                 .AddDiagnosticLogger(diagnosticLoggerFixture, outputHelper, (config) => config.SetMinimumLevel(LogLevel.Debug))
-                .AddKiBoardsLogging()
+                .AddKiBoardsLogging(outputHelper)
                 .BuildServiceProvider();
 
             _logger = provider.GetRequiredService<ILogger<DiagnosticLoggerFixture_TestCase_Must>>();
@@ -44,11 +44,8 @@ namespace KiBoards.Extensions.Logging.Tests
             {
                 ["ComputerName"] = Environment.MachineName,
             }))
-            {
-                using (_logger.TestScope(_output))
-                {
-                    _logger.LogInformation("Computer Name with Test Run Id");
-                }
+            {              
+               _logger.LogInformation("Computer Name with Test Run Id");               
             }
         }
 
