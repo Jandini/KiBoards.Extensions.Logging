@@ -10,7 +10,7 @@ namespace KiBoards.Extensions.Logging.Tests
         public DiagnosticLoggerFixture_Must(DiagnosticLoggerFixture diagnosticLoggerFixture)
         {            
             var provider = new ServiceCollection()                
-                .AddDiagnosticLogger(diagnosticLoggerFixture, LogLevel.Debug)
+                .AddDiagnosticLogger(diagnosticLoggerFixture, LogLevel.Debug)                
                 .BuildServiceProvider();
 
             _logger = provider.GetRequiredService<ILogger<DiagnosticLoggerFixture_Must>>();
