@@ -21,8 +21,8 @@ namespace KiBoards.Extensions.Logging
 
             return services.AddLogging(builder => configure(builder).AddSerilog(new LoggerConfiguration()
                 .WriteTo.Elasticsearch(elasticOptions)
-                .Enrich.WithProperty("TestCaseId", (KiBoardsTestRun.Instance.Id + testCase.UniqueID).ComputeMD5())
-                .Enrich.WithProperty("TestRunId", KiBoardsTestRun.Instance.Id)
+                .Enrich.WithProperty("TestCaseId", (Startup.Instance.RunId + testCase.UniqueID).ComputeMD5())
+                .Enrich.WithProperty("TestRunId", Startup.Instance.RunId)
                 .Enrich.WithProperty("TestCaseUniqueId", testCase.UniqueID)
                 .CreateLogger(), true));
         }
