@@ -18,7 +18,6 @@ namespace KiBoards.Extensions.Logging.Tests
                 .BuildServiceProvider();
 
             _logger = provider.GetRequiredService<ILogger<KiBoardsLogging_Tests>>();
-
         }
 
         [Fact]

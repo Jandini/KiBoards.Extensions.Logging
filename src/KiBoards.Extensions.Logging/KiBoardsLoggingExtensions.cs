@@ -13,55 +13,61 @@ namespace KiBoards.Extensions.Logging
         {
             KiBoardsTestCaseContext testCaseContext = null;
 
-            if (testOutputHelper != null)
+            if (Startup.Instance != null)
             {
-                var testCase = testOutputHelper.GetTestCase();
-                
-                if (testCase != null)
+                if (testOutputHelper != null)
                 {
-                    testCaseContext = new KiBoardsTestCaseContext()
+                    var testCase = testOutputHelper.GetTestCase();
+
+                    if (testCase != null)
                     {
-                        RunId = Startup.Instance.RunId,
-                        TestCase = new KiBoardsTestCase()
+                        testCaseContext = new KiBoardsTestCaseContext()
                         {
-                            Id = (Startup.Instance.RunId + testCase.UniqueID).ComputeMD5(),
-                            DisplayName = testCase.DisplayName,
-                            UniqueId = testCase.UniqueID,
-                            Traits = testCase.Traits,
-                            Method = new KiBoardsTestCaseMethod()
+                            RunId = Startup.Instance.RunId,
+                            TestCase = new KiBoardsTestCase()
                             {
-                                Name = testCase.TestMethod.Method.Name,
-                            },
-                            Class = new KiBoardsTestCaseClass()
-                            {
-                                Name = testCase.TestMethod.TestClass.Class.Name,
-                                Assembly = new KiBoardsTestCaseAssembly()
+                                Id = (Startup.Instance.RunId + testCase.UniqueID).ComputeMD5(),
+                                DisplayName = testCase.DisplayName,
+                                UniqueId = testCase.UniqueID,
+                                Traits = testCase.Traits,
+                                Method = new KiBoardsTestCaseMethod()
                                 {
-                                    Name = testCase.TestMethod.TestClass.Class.Assembly.Name,
-                                    AssemblyPath = testCase.TestMethod.TestClass.Class.Assembly.AssemblyPath
+                                    Name = testCase.TestMethod.Method.Name,
+                                },
+                                Class = new KiBoardsTestCaseClass()
+                                {
+                                    Name = testCase.TestMethod.TestClass.Class.Name,
+                                    Assembly = new KiBoardsTestCaseAssembly()
+                                    {
+                                        Name = testCase.TestMethod.TestClass.Class.Assembly.Name,
+                                        AssemblyPath = testCase.TestMethod.TestClass.Class.Assembly.AssemblyPath
+                                    }
+                                },
+                                Collection = new KiBoardsTestCaseCollection()
+                                {
+                                    DisplayName = testCase.TestMethod.TestClass.TestCollection.DisplayName,
+                                    UniqueId = testCase.TestMethod.TestClass.TestCollection.UniqueID,
                                 }
-                            },
-                            Collection = new KiBoardsTestCaseCollection()
-                            {
-                                DisplayName = testCase.TestMethod.TestClass.TestCollection.DisplayName,
-                                UniqueId = testCase.TestMethod.TestClass.TestCollection.UniqueID,
                             }
-                        }
-                    };
+                        };
+                    }
                 }
-            }                     
 
+                var elasticOptions = new ElasticsearchSinkOptions(new Uri(Environment.GetEnvironmentVariable("KIB_ELASTICSEARCH_HOST") ?? "http://localhost:9200"))
+                {
+                    IndexFormat = $"kiboards-testlogs-{DateTime.UtcNow:yyyy-MM}",
+                    AutoRegisterTemplate = true,
+                };
 
-            var elasticOptions = new ElasticsearchSinkOptions(new Uri(Environment.GetEnvironmentVariable("KIB_ELASTICSEARCH_HOST") ?? "http://localhost:9200"))
+                return services.AddLogging(builder => configure(builder).AddSerilog(new LoggerConfiguration()
+                    .WriteTo.Elasticsearch(elasticOptions)
+                    .Enrich.WithProperty("TestContext", testCaseContext, true)
+                    .CreateLogger(), true));
+            }       
+            else
             {
-                IndexFormat = $"kiboards-testlogs-{DateTime.UtcNow:yyyy-MM}",
-                AutoRegisterTemplate = true,
-            };
-
-            return services.AddLogging(builder => configure(builder).AddSerilog(new LoggerConfiguration()
-                .WriteTo.Elasticsearch(elasticOptions)
-                .Enrich.WithProperty("TestContext", testCaseContext , true)
-                .CreateLogger(), true));
+                return services.AddLogging();
+            }
         }
 
 

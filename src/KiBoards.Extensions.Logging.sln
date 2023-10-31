@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KiBoards.Extensions.Logging", "KiBoards.Extensions.Logging\KiBoards.Extensions.Logging.csproj", "{B33018B9-7369-4B7D-87A9-248CBC5DF408}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KiBoards.Extensions.Logging.Tests", "KiBoards.Extensions.Logging.Tests\KiBoards.Extensions.Logging.Tests.csproj", "{5F0BB36A-41EC-4218-BE53-CF31D52EAF8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KiBoards.Extensions.Logging.Tests", "KiBoards.Extensions.Logging.Tests\KiBoards.Extensions.Logging.Tests.csproj", "{5F0BB36A-41EC-4218-BE53-CF31D52EAF8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KiBoards.Extensions.Logging.Tests.NoFramework", "KiBoards.Extensions.Logging.Tests.NoFramework\KiBoards.Extensions.Logging.Tests.NoFramework.csproj", "{64AAA008-F1DE-4A43-896E-BD509FC36C30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5F0BB36A-41EC-4218-BE53-CF31D52EAF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F0BB36A-41EC-4218-BE53-CF31D52EAF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F0BB36A-41EC-4218-BE53-CF31D52EAF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64AAA008-F1DE-4A43-896E-BD509FC36C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64AAA008-F1DE-4A43-896E-BD509FC36C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64AAA008-F1DE-4A43-896E-BD509FC36C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64AAA008-F1DE-4A43-896E-BD509FC36C30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
