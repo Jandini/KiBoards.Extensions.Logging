@@ -51,7 +51,6 @@ namespace KiBoards.Extensions.Logging
                 }
             }                     
 
-
             var elasticOptions = new ElasticsearchSinkOptions(new Uri(Environment.GetEnvironmentVariable("KIB_ELASTICSEARCH_HOST") ?? "http://localhost:9200"))
             {
                 IndexFormat = $"kiboards-testlogs-{DateTime.UtcNow:yyyy-MM}",
