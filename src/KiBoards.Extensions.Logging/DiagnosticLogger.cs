@@ -37,8 +37,12 @@ namespace KiBoards.Extensions.Logging
                     // This could be implemented as begin scope
                     ITest test = _outputHelper.GetTest();
 
-                    var assemlbyName = Path.GetFileNameWithoutExtension(test.TestCase.TestMethod.TestClass.Class.Assembly.AssemblyPath);
-                    messageParts.Add(test.DisplayName.Replace(assemlbyName, "").TrimStart('.'));
+                    // it is possible that logger will be called from the fixture
+                    if (test != null)
+                    {
+                        var assemlbyName = Path.GetFileNameWithoutExtension(test.TestCase.TestMethod.TestClass.Class.Assembly.AssemblyPath);
+                        messageParts.Add(test.DisplayName.Replace(assemlbyName, "").TrimStart('.'));
+                    }
                 }
 
                 messageParts.Add(logLevel.ToString());
